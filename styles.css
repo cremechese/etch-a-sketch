@@ -1,7 +1,18 @@
 .pixel {
     border: 1px solid gray;
-    min-width: 20px;
-    min-height: 20px;
+    /*min-width: 48px;
+    min-height: 48px;*/
     display: inline-block;
-    margin-right: 2px;
+    margin-right: -1px;
+    background-color:white;
+    user-select: none;
+  }
+
+.row {
+    /*height: 48px;*/
+}
+
+  #container {
+      width: 800px;
+      height: 800px;
   }

@@ -10,8 +10,6 @@
 <body>
     <div class="side-panel">
         <button id="reset">Restart</button>
-        <button id="randomize">Random Colors</button>
-        <div id="current-toggle">Random colors off</div>
         <div>
             <input type="color" id="pen-color" name="pen-color"
                 value="#e66465">
@@ -23,6 +21,24 @@
             </div>
             <div id="demo">16</div>
         </div>
+        <div>
+            <input type="radio" id="selected-color" name="pen-style" value="selected-color" checked>
+            <label for="selected-color">Selected Pen Color</label>
+          </div>
+        <div>
+            <input type="radio" id="randomize" name="pen-style" value="randomize">
+            <label for="randomize">Random Colors</label>
+          </div>
+          
+          <div>
+            <input type="radio" id="lighten" name="pen-style" value="lighten">
+            <label for="lighten">Lighten by 10%</label>
+          </div>
+          
+          <div>
+            <input type="radio" id="darken" name="pen-style" value="darken">
+            <label for="darken">Darken by 10%</label>
+          </div>
     </div>
     <div class="outer-box">
         <div id="container" draggable="false"></div>

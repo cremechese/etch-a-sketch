@@ -4,7 +4,7 @@
     min-height: 48px;*/
     display: inline-block;
     margin-right: -1px;
-    background-color:white;
+    background-color: #FFFFFF;
     user-select: none;
   }
 
@@ -15,7 +15,8 @@
 body {
     display: flex;
     background-color: rgb(49, 49, 49);
-    color: rgb(255, 211, 117);
+    color: rgb(230, 230, 230);
+    font-family: 'Abel', Arial, Helvetica, sans-serif;
 }
 
 .side-panel, .outer-box {
@@ -47,6 +48,4 @@ body {
     height: 800px;
 }
 
-#slide {
-    display: flex;
-}
+ 

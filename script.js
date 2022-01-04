@@ -19,6 +19,12 @@ document.getElementById("randomize").addEventListener("click", function( event )
     console.log(colorToggle);
 });
 
+document.getElementById("reset").addEventListener("click", function( event ) {
+    for(i = 0; i < pixels.length; i++) {
+        pixels[i].style.backgroundColor = "white";
+    }
+});
+
 function defaultGrid() {
     makeRows(16);
     makeColumns(16);
@@ -79,12 +85,6 @@ function initialize() {
         pixels[i].style.height = Math.floor(800/Math.sqrt(pixels.length)) - 1;
         pixels[i].style.width = Math.floor(800/Math.sqrt(pixels.length)) - 1;
     }
-
-    document.getElementById("reset").addEventListener("click", function( event ) {
-        for(i = 0; i < pixels.length; i++) {
-            pixels[i].style.backgroundColor = "white";
-        }
-    });
 }
 
 var slider = document.getElementById("myRange");

@@ -12,7 +12,39 @@
     /*height: 48px;*/
 }
 
+body {
+    display: flex;
+    background-color: rgb(49, 49, 49);
+    color: rgb(255, 211, 117);
+}
+
+.side-panel, .outer-box {
+    background-color: rgb(110, 110, 110);
+    margin: 10px;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 30px;
+    gap: 5px;
+}
+
+.outer-box {
+    border: 1px solid gray;
+    width: 820px;
+    height: 820px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #container {
-      width: 800px;
-      height: 800px;
-  }
+    width: 800px;
+    height: 800px;
+}
+
+#slide {
+    display: flex;
+}

@@ -8,19 +8,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button id="reset">Restart</button>
-    <button id="randomize">Random Colors</button>
-    <div id="current-toggle">Random colors off</div>
-    <div>
-        <input type="color" id="pen-color" name="pen-color"
-               value="#e66465">
-        <label for="pen-color">Pen Color</label>
+    <div class="side-panel">
+        <button id="reset">Restart</button>
+        <button id="randomize">Random Colors</button>
+        <div id="current-toggle">Random colors off</div>
+        <div>
+            <input type="color" id="pen-color" name="pen-color"
+                value="#e66465">
+            <label for="pen-color">Pen Color</label>
+        </div>
+        <div id="slide">
+            <div class="slidecontainer">
+                <input type="range" min="1" max="20" value="16" class="slider" id="my-range">
+            </div>
+            <div id="demo">16</div>
+        </div>
     </div>
-    <div class="slidecontainer">
-        <input type="range" min="1" max="20" value="16" class="slider" id="my-range">
+    <div class="outer-box">
+        <div id="container" draggable="false"></div>
     </div>
-    <div id="demo">16</div>
-    <div id="container" draggable="false"></div>
 </body>
 <script src="script.js"></script> 
 </html>

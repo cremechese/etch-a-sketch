@@ -7,7 +7,9 @@ let color = colorPicker.value;
 let colorToggle = false;
 let lightToggle = false;
 let darkToggle = false;
+let gridToggle = false;
 let radioButtons = document.getElementsByName("pen-style");
+let checkBoxes = document.getElementsByName("gridlines");
 const rgba2hex = (rgba) => `#${rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+\.{0,1}\d*))?\)$/).slice(1).map((n, i) => (i === 3 ? Math.round(parseFloat(n) * 255) : parseFloat(n)).toString(16).padStart(2, '0').replace('NaN', '')).join('')}`
 
 
@@ -32,7 +34,28 @@ function checkRadioButtons() {
         lightToggle = false;
         darkToggle = false;
     }
+
+    if (checkBoxes[0].checked === true) {
+        gridToggle = true;
+    } else {
+        gridToggle = false;
+    }
 }
+
+function stylizeGrid() {
+    for(i=0; i < pixels.length; i++) {
+        if(gridToggle === true) {
+            pixels[i].style.borderColor = "grey";
+        } else {
+            pixels[i].style.borderColor = "transparent";
+        }
+    }
+}
+
+checkBoxes[0].addEventListener("change", function(event) {
+    checkRadioButtons();
+    stylizeGrid();
+});
 
 for (i = 0; i < radioButtons.length; i++) {
     radioButtons[i].addEventListener("change", function(event) {
@@ -57,6 +80,12 @@ for (i = 0; i < radioButtons.length; i++) {
     });
 }
 
+checkBoxes[0].addEventListener("change", function(event) {
+    if (checkBoxes[0].checked === true) {
+        
+    }
+});
+
 document.getElementById("reset").addEventListener("click", function( event ) {
     for(i = 0; i < pixels.length; i++) {
         pixels[i].style.backgroundColor = "white";
@@ -68,6 +97,7 @@ function defaultGrid() {
     makeColumns(16);
     initialize();
     checkRadioButtons();
+    stylizeGrid();
 }
 
 function makeRows(amount) {

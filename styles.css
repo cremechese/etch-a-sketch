@@ -21,6 +21,7 @@ body {
 .side-panel, .outer-box {
     background-color: rgb(110, 110, 110);
     margin: 10px;
+    border-radius: 15px;
 }
 
 .side-panel {

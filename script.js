@@ -2,6 +2,8 @@ const container = document.getElementById("container");
 let rows = document.getElementsByClassName("row");
 let pixels = document.getElementsByClassName("pixel");
 let mouseDown = false;
+let color = "red";
+let colorToggle = false;
 
 defaultGrid();
 
@@ -32,6 +34,10 @@ function makeColumns(amount) {
     }
 }
 
+function randomizeColor() {
+    color = "#"+Math.floor(Math.random()*16777215).toString(16);
+}
+
 container.addEventListener("mousedown", function() {
     mouseDown = true;
 });
@@ -44,12 +50,18 @@ function initialize() {
     for(i=0; i < pixels.length; i++) {
         pixels[i].addEventListener("mouseover", function(event) {
             if (mouseDown===true) {
-                event.target.style.backgroundColor = "purple";
+                if(colorToggle===true) {
+                    randomizeColor();
+                }
+                event.target.style.backgroundColor = color;
             }
         }, false);
 
         pixels[i].addEventListener("mousedown", function(event) {
-            event.target.style.backgroundColor = "purple";
+            if(colorToggle===true) {
+                randomizeColor();
+            }
+            event.target.style.backgroundColor = color;
         }, false);
 
         pixels[i].style.height = Math.floor(800/Math.sqrt(pixels.length)) - 1;
@@ -59,6 +71,17 @@ function initialize() {
     document.getElementById("reset").addEventListener("click", function( event ) {
         for(i = 0; i < pixels.length; i++) {
             pixels[i].style.backgroundColor = "white";
+        }
+    });
+
+    document.getElementById("randomize").addEventListener("click", function( event ) {
+        if(colorToggle===false) {
+            document.getElementById("currentToggle").innerHTML = "Random colors on";
+            colorToggle = true;
+        }
+        else {
+            document.getElementById("currentToggle").innerHTML = "Random colors off";
+            colorToggle = false;
         }
     });
 }

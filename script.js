@@ -7,6 +7,18 @@ let colorToggle = false;
 
 defaultGrid();
 
+document.getElementById("randomize").addEventListener("click", function( event ) {
+    if(colorToggle===false) {
+        document.getElementById("currentToggle").innerHTML = "Random colors on";
+        colorToggle = true;
+    }
+    else {
+        document.getElementById("currentToggle").innerHTML = "Random colors off";
+        colorToggle = false;
+    }
+    console.log(colorToggle);
+});
+
 function defaultGrid() {
     makeRows(16);
     makeColumns(16);
@@ -71,17 +83,6 @@ function initialize() {
     document.getElementById("reset").addEventListener("click", function( event ) {
         for(i = 0; i < pixels.length; i++) {
             pixels[i].style.backgroundColor = "white";
-        }
-    });
-
-    document.getElementById("randomize").addEventListener("click", function( event ) {
-        if(colorToggle===false) {
-            document.getElementById("currentToggle").innerHTML = "Random colors on";
-            colorToggle = true;
-        }
-        else {
-            document.getElementById("currentToggle").innerHTML = "Random colors off";
-            colorToggle = false;
         }
     });
 }

@@ -95,11 +95,11 @@ function randomizeColor() {
     color = "#"+Math.floor(Math.random()*16777215).toString(16);
 }
 
-container.addEventListener("mousedown", function() {
+document.body.addEventListener("mousedown", function() {
     mouseDown = true;
 });
 
-container.addEventListener("mouseup", function() {
+document.body.addEventListener("mouseup", function() {
     mouseDown = false;
 });
 

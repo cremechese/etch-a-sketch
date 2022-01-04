@@ -29,6 +29,7 @@ body {
     padding: 15px;
     padding-top: 30px;
     gap: 5px;
+    text-align: center;
 }
 
 .outer-box {

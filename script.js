@@ -88,7 +88,7 @@ checkBoxes[0].addEventListener("change", function(event) {
 
 document.getElementById("reset").addEventListener("click", function( event ) {
     for(i = 0; i < pixels.length; i++) {
-        pixels[i].style.backgroundColor = "white";
+        pixels[i].style.backgroundColor = "#FFFFFF";
     }
 });
 

@@ -10,9 +10,14 @@
 <body>
     <button id="reset">Restart</button>
     <button id="randomize">Random Colors</button>
-    <div id="currentToggle">Random colors off</div>
+    <div id="current-toggle">Random colors off</div>
+    <div>
+        <input type="color" id="pen-color" name="pen-color"
+               value="#e66465">
+        <label for="pen-color">Pen Color</label>
+    </div>
     <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="16" class="slider" id="myRange">
+        <input type="range" min="1" max="100" value="16" class="slider" id="my-range">
     </div>
     <div id="demo">16</div>
     <div id="container" draggable="false"></div>

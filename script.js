@@ -2,21 +2,23 @@ const container = document.getElementById("container");
 let rows = document.getElementsByClassName("row");
 let pixels = document.getElementsByClassName("pixel");
 let mouseDown = false;
-let color = "red";
+let color = "#e66465";
+let tempColor = "#e66465";
 let colorToggle = false;
 
 defaultGrid();
 
 document.getElementById("randomize").addEventListener("click", function( event ) {
     if(colorToggle===false) {
-        document.getElementById("currentToggle").innerHTML = "Random colors on";
+        tempColor = color;
+        document.getElementById("current-toggle").innerHTML = "Random colors on";
         colorToggle = true;
     }
     else {
-        document.getElementById("currentToggle").innerHTML = "Random colors off";
+        color = tempColor;
+        document.getElementById("current-toggle").innerHTML = "Random colors off";
         colorToggle = false;
     }
-    console.log(colorToggle);
 });
 
 document.getElementById("reset").addEventListener("click", function( event ) {
@@ -87,8 +89,8 @@ function initialize() {
     }
 }
 
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
+let slider = document.getElementById("my-range");
+let output = document.getElementById("demo");
 slider.value = 16;
 output.innerHTML = 16; // Display the default slider value
 
@@ -105,4 +107,10 @@ slider.addEventListener("click", function(event) {
     makeRows(this.value);
     makeColumns(this.value);
     initialize();
+});
+
+let colorPicker = document.getElementById("pen-color");
+
+colorPicker.addEventListener("change", function(event){
+    color = event.target.value;
 });

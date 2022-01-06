@@ -8,6 +8,7 @@ let colorToggle = false;
 let lightToggle = false;
 let darkToggle = false;
 let gridToggle = false;
+let dropperToggle = false;
 let radioButtons = document.getElementsByName("pen-style");
 let checkBoxes = document.getElementsByName("gridlines");
 const rgba2hex = (rgba) => `#${rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+\.{0,1}\d*))?\)$/).slice(1).map((n, i) => (i === 3 ? Math.round(parseFloat(n) * 255) : parseFloat(n)).toString(16).padStart(2, '0').replace('NaN', '')).join('')}`
@@ -20,19 +21,28 @@ function checkRadioButtons() {
         colorToggle = true;
         lightToggle = false;
         darkToggle = false;
+        dropperToggle = false;
     } else if (radioButtons[2].checked === true) {
         colorToggle = false;
         lightToggle = true;
         darkToggle = false;
+        dropperToggle = false;
     } else if (radioButtons[3].checked === true) {
         colorToggle = false;
         lightToggle = false;
         darkToggle = true;
+        dropperToggle = false;
+    } else if (radioButtons[4].checked === true) {
+        colorToggle = false;
+        lightToggle = false;
+        darkToggle = false;
+        dropperToggle = true;
     } else {
         color = colorPicker.value;
         colorToggle = false;
         lightToggle = false;
         darkToggle = false;
+        dropperToggle = false;
     }
 
     if (checkBoxes[0].checked === true) {
@@ -63,19 +73,28 @@ for (i = 0; i < radioButtons.length; i++) {
             colorToggle = true;
             lightToggle = false;
             darkToggle = false;
+            dropperToggle = false;
         } else if (radioButtons[2].checked === true) {
             colorToggle = false;
             lightToggle = true;
             darkToggle = false;
+            dropperToggle = false;
         } else if (radioButtons[3].checked === true) {
             colorToggle = false;
             lightToggle = false;
             darkToggle = true;
+            dropperToggle = false;
+        } else if (radioButtons[4].checked === true) {
+            colorToggle = false;
+            lightToggle = false;
+            darkToggle = false;
+            dropperToggle = true;
         } else {
             color = colorPicker.value;
             colorToggle = false;
             lightToggle = false;
             darkToggle = false;
+            dropperToggle = false;
         }
     });
 }
@@ -147,7 +166,12 @@ function initialize() {
                     event.target.style.backgroundColor = LightenDarkenColor(rgba2hex(event.target.style.backgroundColor.toString()), 10);
                 } else if (darkToggle===true) {
                     event.target.style.backgroundColor = LightenDarkenColor(rgba2hex(event.target.style.backgroundColor.toString()), -10);
-                } else {
+                } else if (dropperToggle===true) {
+                    color = event.target.style.backgroundColor;
+                    dropperToggle=false;
+                    radioButtons[0].checked = true;
+                    colorPicker.value = rgba2hex(color);
+            } else {
                     event.target.style.backgroundColor = color;
                 }
             }
@@ -161,6 +185,11 @@ function initialize() {
                 event.target.style.backgroundColor = LightenDarkenColor(rgba2hex(event.target.style.backgroundColor.toString()), 10);
             } else if (darkToggle===true) {
                 event.target.style.backgroundColor = LightenDarkenColor(rgba2hex(event.target.style.backgroundColor.toString()), -10);
+            } else if (dropperToggle===true) {
+                color = event.target.style.backgroundColor;
+                dropperToggle=false;
+                radioButtons[0].checked = true;
+                colorPicker.value = rgba2hex(color);
             } else {
                 event.target.style.backgroundColor = color;
             }

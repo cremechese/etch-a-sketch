@@ -21,7 +21,6 @@ function defaultGrid() {
     makeRows(16);
     makeColumns(16);
     clickPixel();
-    //checkRadioButtons();
     stylizeGrid();
 }
 
@@ -30,9 +29,9 @@ function defaultGrid() {
 function makeRows(amount) {
     for (r = 0; r < amount; r++) {
         let row = document.createElement("div");
-        row.style.height = Math.floor(800/amount) - 1 + "px";
+        row.style.height = Math.floor(800 / amount) - 1 + "px";
         row.setAttribute('draggable', false);
-        container.appendChild(row).className= "row";
+        container.appendChild(row).className = "row";
     }
 }
 
@@ -40,8 +39,8 @@ function makeColumns(amount) {
     for (r = 0; r < rows.length; r++) {
         for (c = 0; c < amount; c++) {
             let newCell = document.createElement("div");
-            newCell.style.height = Math.floor(800/amount) - 1 + "px";
-            newCell.style.width = Math.floor(800/amount) - 1 + "px";
+            newCell.style.height = Math.floor(800 / amount) - 1 + "px";
+            newCell.style.width = Math.floor(800 / amount) - 1 + "px";
             newCell.setAttribute('draggable', false);
             rows[r].appendChild(newCell).className = "pixel"
         }
@@ -51,35 +50,35 @@ function makeColumns(amount) {
 //if the user clicks or click-drags over the cell divs, change the divs color to
 //the selected option based on radio buttons
 function clickPixel() {
-    for(i=0; i < pixels.length; i++) {
-        if(!pixels[i].style.backgroundColor) {
+    for (i = 0; i < pixels.length; i++) {
+        if (!pixels[i].style.backgroundColor) {
             pixels[i].style.backgroundColor = "#FFFFFF";
         }
-        pixels[i].addEventListener("mouseover", function(event) {
-            if (mouseDown===true) {
-                if(radioButtons[1].checked===true) {
+        pixels[i].addEventListener("mouseover", function (event) {
+            if (mouseDown === true) {
+                if (radioButtons[1].checked === true) {
                     event.target.style.backgroundColor = randomColor();
-                } else if (radioButtons[2].checked===true) {
+                } else if (radioButtons[2].checked === true) {
                     event.target.style.backgroundColor = LightenDarkenColor(rgba2hex(event.target.style.backgroundColor.toString()), 10);
-                } else if (radioButtons[3].checked===true) {
+                } else if (radioButtons[3].checked === true) {
                     event.target.style.backgroundColor = LightenDarkenColor(rgba2hex(event.target.style.backgroundColor.toString()), -10);
-                } else if (radioButtons[4].checked===true) {
+                } else if (radioButtons[4].checked === true) {
                     radioButtons[0].checked = true;
                     colorPicker.value = rgba2hex(event.target.style.backgroundColor);
-            } else {
+                } else {
                     event.target.style.backgroundColor = colorPicker.value;
                 }
             }
         }, false);
 
-        pixels[i].addEventListener("mousedown", function(event) {
-            if(radioButtons[1].checked===true) {
+        pixels[i].addEventListener("mousedown", function (event) {
+            if (radioButtons[1].checked === true) {
                 event.target.style.backgroundColor = randomColor();
-            } else if (radioButtons[2].checked===true) {
+            } else if (radioButtons[2].checked === true) {
                 event.target.style.backgroundColor = LightenDarkenColor(rgba2hex(event.target.style.backgroundColor.toString()), 16);
-            } else if (radioButtons[3].checked===true) {
+            } else if (radioButtons[3].checked === true) {
                 event.target.style.backgroundColor = LightenDarkenColor(rgba2hex(event.target.style.backgroundColor.toString()), -16);
-            } else if (radioButtons[4].checked===true) {
+            } else if (radioButtons[4].checked === true) {
                 radioButtons[0].checked = true;
                 colorPicker.value = rgba2hex(event.target.style.backgroundColor);
             } else {
@@ -87,15 +86,15 @@ function clickPixel() {
             }
         }, false);
 
-        pixels[i].style.height = Math.floor(800/Math.sqrt(pixels.length)) - 1;
-        pixels[i].style.width = Math.floor(800/Math.sqrt(pixels.length)) - 1;
+        pixels[i].style.height = Math.floor(800 / Math.sqrt(pixels.length)) - 1;
+        pixels[i].style.width = Math.floor(800 / Math.sqrt(pixels.length)) - 1;
     }
 }
 
 //toggles gridlines
-function stylizeGrid() { 
-    for(i=0; i < pixels.length; i++) {
-        if(checkBoxes[0].checked === true) {
+function stylizeGrid() {
+    for (i = 0; i < pixels.length; i++) {
+        if (checkBoxes[0].checked === true) {
             pixels[i].style.borderColor = "grey";
         } else {
             pixels[i].style.borderColor = "transparent";
@@ -105,40 +104,40 @@ function stylizeGrid() {
 
 //toggle functions to determine the current state of the mouse
 //as far as i'm aware there is no better way to do this in javascript
-document.body.addEventListener("mousedown", function() {
+document.body.addEventListener("mousedown", function () {
     mouseDown = true;
 });
 
-document.body.addEventListener("mouseup", function() {
+document.body.addEventListener("mouseup", function () {
     mouseDown = false;
 });
 
 //when the gridline checkbox is clicked, change style of gridlines
-checkBoxes[0].addEventListener("change", function(event) { 
+checkBoxes[0].addEventListener("change", function (event) {
     stylizeGrid();
 });
 
 //when the reset button is clicked, reset the canvas 
 //by setting every pixel to white
-document.getElementById("reset").addEventListener("click", function( event ) {
-    for(i = 0; i < pixels.length; i++) {
+document.getElementById("reset").addEventListener("click", function (event) {
+    for (i = 0; i < pixels.length; i++) {
         pixels[i].style.backgroundColor = "#FFFFFF";
     }
 });
 
 //return a random color hexcode
 function randomColor() {
-    return "#"+Math.floor(Math.random()*16777215).toString(16);
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 //update the current slider value whenever its dragged to a new value
-slider.oninput = function() {
-  output.innerHTML = this.value;
-} 
+slider.oninput = function () {
+    output.innerHTML = this.value;
+}
 
 
 //when the slider is clicked, create a new grid of desired value
-slider.addEventListener("click", function(event) {
+slider.addEventListener("click", function (event) {
     let currentRowAmount = rows.length;
     for (r = currentRowAmount - 1; r > -1; r--) {
         rows[r].remove(); //remove all rows currently onscreen
@@ -150,16 +149,16 @@ slider.addEventListener("click", function(event) {
 
 //take a hex color and adjust it by the specified amt
 function LightenDarkenColor(col, amt) {
-    function adjust(match){
+    function adjust(match) {
         return ('0' + Math.min(255, Math.max(0, parseInt(match, 16) + amt)).toString(16)).substr(-2);
-    }    
+    }
 
     return (
         '#' +
         col
-          .replace(/^#/, '')
-          .replace(/../g, adjust)
-      );
+            .replace(/^#/, '')
+            .replace(/../g, adjust)
+    );
 }
 
 defaultGrid();

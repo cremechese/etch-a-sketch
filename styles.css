@@ -1,15 +1,9 @@
 .pixel {
     border: 1px solid gray;
-    /*min-width: 48px;
-    min-height: 48px;*/
     display: inline-block;
     margin-right: -1px;
     background-color: #FFFFFF;
     user-select: none;
-  }
-
-.row {
-    /*height: 48px;*/
 }
 
 body {
@@ -46,6 +40,4 @@ body {
 #container {
     width: 800px;
     height: 800px;
-}
-
- 
+} 
